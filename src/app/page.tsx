@@ -1,0 +1,14 @@
+"use client"
+import checkLogin from "./lib/checklogin";
+import { useEffect } from "react";
+
+
+export default async function Home() {
+  useEffect(() => {
+    checkLogin()
+  }, [])
+  
+  return (
+    <></>
+  );
+}
