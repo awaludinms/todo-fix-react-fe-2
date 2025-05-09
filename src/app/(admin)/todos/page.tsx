@@ -45,7 +45,10 @@ const Todos = () => {
             status: values["status"]
         }).then((resp) => {
             console.log(resp)
-            fetchData().then(data => setTodoData(data.data));
+            fetchData().then(data => {
+                setTodoData(data.data)
+                console.log(data.data)
+            });
         })
     }
 
