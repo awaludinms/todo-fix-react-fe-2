@@ -3,7 +3,7 @@ import checkLogin from "./lib/checklogin";
 import { useEffect } from "react";
 
 
-export default async function Home() {
+export default function Home() {
   useEffect(() => {
     checkLogin()
   }, [])

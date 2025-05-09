@@ -22,7 +22,7 @@
 
 // modified from tailadmin by awaludin on 7 mei 2025
 
-import { Outfit } from 'next/font/google';
+// import { Outfit } from 'next/font/google';
 import './globals.css';
 
 import type { Metadata } from "next";
@@ -43,9 +43,9 @@ export const metadata: Metadata = {
   description: "Yet Another Todo app",
 };
 
-const outfit = Outfit({
-  subsets: ["latin"],
-});
+// const outfit = Outfit({
+//   subsets: ["latin"],
+// });
 
 export default function RootLayout({
   children,

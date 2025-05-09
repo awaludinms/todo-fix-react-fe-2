@@ -1,29 +1,10 @@
 "use client"
 import React, { useEffect, useState } from "react";
-import { fetchData, saveNewToDo } from "@/app/(admin)/todos/api";
 import { getUserInfo } from "../api";
 import Todos from "../todos/page";
 import Forecast from "../forecast/page";
 
-interface TodoData {
-    id: string,
-    task: string,
-    created_at: string,
-    status: string,
-}
-
-type TodoDataBaru = {
-    task: string,
-    status: number
-}
-
 export default function Page() {
-    const [todoData, setTodoData] = useState<TodoData[]>()
-    const [values, setValues] = useState<TodoDataBaru>({
-        "task": "",
-        "status": 0
-    })
-    const [kutipan, setKutipan] = useState("")
     type UserInfo = {
         name: string,
         email: string,
@@ -36,7 +17,6 @@ export default function Page() {
 
     useEffect(() => {
         console.log(process.env.BASE_URL_API)
-        fetchData().then(data => setTodoData(data.data));
         getUserInfo().then((res)=> setUserInfo(res))
     }, [
 

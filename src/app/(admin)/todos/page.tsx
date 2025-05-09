@@ -1,8 +1,6 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import { deleteTodo, fetchData, fetchDataById, fetchDataFilter, saveNewToDo, updateEditedToDo } from "./api";
-import { number } from "zod";
-import { Metadata } from "next";
 
 interface TodoData {
     id: string,
@@ -15,22 +13,12 @@ type TodoDataBaru = {
     task: string,
     status: number
 }
-type TodoDataEdit = {
-    task: string,
-    status: number,
-    id: number
-}
 
 const Todos = () => {
     const [todoData, setTodoData] = useState<TodoData[]>([])
     const [values, setValues] = useState<TodoDataBaru>({
         "task": "",
         "status": 0
-    })
-    const [editTodoData, setEditTodoData] = useState<TodoDataEdit>({
-        "task": "",
-        "status": 0,
-        "id": 0
     })
 
     useEffect(() => {
@@ -68,13 +56,13 @@ const Todos = () => {
             try {
 
 
-                let task = document.getElementById('task') as HTMLInputElement
+                const task = document.getElementById('task') as HTMLInputElement
                 task.value = data.task
 
-                let status = document.getElementById('status') as HTMLSelectElement
+                const status = document.getElementById('status') as HTMLSelectElement
                 status.value = data.status
 
-                let id = document.getElementById('idTodo') as HTMLInputElement
+                const id = document.getElementById('idTodo') as HTMLInputElement
                 id.value = data.id
             } catch (e) {
                 console.error(e)
@@ -89,13 +77,13 @@ const Todos = () => {
             try {
 
 
-                let task = document.getElementById('view_task') as HTMLInputElement
+                const task = document.getElementById('view_task') as HTMLInputElement
                 task.value = data.task
 
-                let status = document.getElementById('view_status') as HTMLSelectElement
+                const status = document.getElementById('view_status') as HTMLSelectElement
                 status.value = data.status ? 'Selesai' : 'Belum Selesai'
 
-                let created_at = document.getElementById('view_created_at') as HTMLSelectElement
+                const created_at = document.getElementById('view_created_at') as HTMLSelectElement
                 created_at.value = new Intl.DateTimeFormat("id-ID", {
                     dateStyle: "full",
                     timeZone: "Asia/Jakarta",
@@ -109,12 +97,12 @@ const Todos = () => {
 
     async function updateToDo() {
 
-        let itask = document.getElementById('task') as HTMLInputElement
-        let task = itask.value
-        let istatus = document.getElementById('status') as HTMLSelectElement
-        let status = istatus.value
-        let iidTodo = document.getElementById('idTodo') as HTMLInputElement
-        let idTodo = iidTodo.value
+        const itask = document.getElementById('task') as HTMLInputElement
+        const task = itask.value
+        const istatus = document.getElementById('status') as HTMLSelectElement
+        const status = istatus.value
+        const iidTodo = document.getElementById('idTodo') as HTMLInputElement
+        const idTodo = iidTodo.value
 
         console.log(task)
         console.log(status)
@@ -131,13 +119,13 @@ const Todos = () => {
     }
 
     async function handleStatusFilterChange(event: React.ChangeEvent<HTMLSelectElement>) {
-        let filter = event.target.value
+        const filter = event.target.value
         console.log(filter)
         fetchDataFilter(filter).then(data => setTodoData(data.data))
     }
 
-    function hapus(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-        let iidTodo = document.getElementById('hapusIdTodo') as HTMLInputElement
+    function hapus() {
+        const iidTodo = document.getElementById('hapusIdTodo') as HTMLInputElement
         console.log(iidTodo.value)
         deleteTodo(Number(iidTodo.value)).then(res => {
             console.log(res)
@@ -148,7 +136,7 @@ const Todos = () => {
 
     function handleHapusToDo(id: string) {
         console.log(id)
-        let iidTodo = document.getElementById('hapusIdTodo') as HTMLInputElement
+        const iidTodo = document.getElementById('hapusIdTodo') as HTMLInputElement
         iidTodo.value = id
     }
 

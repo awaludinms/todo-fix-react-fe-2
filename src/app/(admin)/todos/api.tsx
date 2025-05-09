@@ -1,7 +1,6 @@
 "use server"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-import { NextRequest, NextResponse } from "next/server"
 
 export async function fetchData() {
     const cookieStore = await cookies()
@@ -37,7 +36,7 @@ export async function fetchDataById(id: number) {
     return response.json();
 }
 
-export async function saveNewToDo(newDataTodo:any) {
+export async function saveNewToDo(newDataTodo:{task:string, status: number}) {
     const cookieStore = await cookies()
     const token = cookieStore.get('token')
 
@@ -55,7 +54,7 @@ export async function saveNewToDo(newDataTodo:any) {
     }
 }
 
-export async function updateEditedToDo(updatedTodo:any, id: number) {
+export async function updateEditedToDo(updatedTodo:{task:string, status:string}, id: number) {
     const cookieStore = await cookies()
     const token = cookieStore.get('token')
 

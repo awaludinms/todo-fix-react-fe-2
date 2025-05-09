@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
 import getForecast from "./api"
-import ImageForecast from "./image"
+// import ImageForecast from "./image"
 
 const Forecast = () => {
     type ForecastDataType = {
